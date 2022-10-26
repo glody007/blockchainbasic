@@ -17,6 +17,11 @@
   
   .Header-link {
     cursor: pointer;
+    color: #555;
+
+    &:hover {
+      color: #F7931A;
+    }
   }
   
   
