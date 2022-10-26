@@ -24,9 +24,12 @@
 .button {
   font-weight : bold ;
   border: none;
+  cursor: pointer;
 }
 
 .button--cta {
   padding: 1rem 2rem 1rem 2rem;
   background-color: #F7931A;
+  color: white;
+  font-size: 20px;
 }
