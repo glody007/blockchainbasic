@@ -1,0 +1,32 @@
+.App-section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.Hero {
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Hero-image {
+  display: flex;
+  justify-content: right;
+  flex: 1;
+  height: 25rem;
+}
+
+.Hero-main {
+  flex: 1;
+}
+
+.button {
+  font-weight : bold ;
+  border: none;
+}
+
+.button--cta {
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: #F7931A;
+}
