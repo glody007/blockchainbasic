@@ -1,6 +1,6 @@
 import './App.scss';
 import logo from './assets/logo.svg'
-import { Header } from './component';
+import { Header, Footer } from './component';
 
 function App() {
   return (
@@ -81,6 +81,8 @@ function App() {
           And they are the ones that give rise to this new currency.
         </p>
       </div>
+
+      <Footer />
     </div>
   );
 }
