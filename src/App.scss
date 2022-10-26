@@ -1,11 +1,21 @@
 .App-section {
   max-width: 1200px;
+  min-height: 90vh;
   margin: auto;
   padding: 0 2rem 0 2rem;
 }
 
+.App-section__title {
+  color: #F7931A;
+  text-align: center;
+}
+
+.App-section__summary {
+  margin: auto;
+  max-width: 50rem;
+}
+
 .Hero {
-  height: 90vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
