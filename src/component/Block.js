@@ -36,7 +36,7 @@ function Block({
     const computedHash = computeHash(number, nonce, data, prev)
     setHash(computedHash)
     onGenerateHash(computedHash)
-  }, [number, nonce, data, prev, onGenerateHash])
+  }, [number, nonce, data, prev])
 
   const refreshState = useCallback(() => {
     if(hashHasRightProperty(hash)) {
