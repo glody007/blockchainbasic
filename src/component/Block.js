@@ -5,15 +5,17 @@ import { useState, useEffect, useCallback } from 'react';
 function Block({
     prev, 
     showNumber, 
+    numberInitialValue,
     showNonce, 
     showPrev, 
     showMine,
-    stateAware
+    stateAware,
+    onGenerateHash
 }) {
   const VALID = "VALID", INVALID = "INVALID"
 
   // States
-  const [number, setNumber] = useState('')
+  const [number, setNumber] = useState(numberInitialValue)
   const [nonce, setNonce] = useState('')
   const [data, setData] = useState('')
   const [hash, setHash] = useState('')
@@ -31,8 +33,10 @@ function Block({
 
   // Callbacks 
   const generateHash = useCallback(() => {
-    setHash(computeHash(number, nonce, data, prev))
-  }, [number, nonce, data, prev])
+    const computedHash = computeHash(number, nonce, data, prev)
+    setHash(computedHash)
+    onGenerateHash(computedHash)
+  }, [number, nonce, data, prev, onGenerateHash])
 
   const refreshState = useCallback(() => {
     if(hashHasRightProperty(hash)) {
@@ -116,10 +120,12 @@ function Block({
 Block.defaultProps = {
     prev: '0000000000000000000000000000000000000000000000000000000000000000',
     showNumber: true,
+    numberInitialValue: 1,
     showNonce: true,
     showPrev: true,
     showMine: true,
     stateAware: true,
+    onGenerateHash: () => {}
 }
 
 export default Block;
