@@ -2,22 +2,43 @@ import './Block.scss'
 import { SHA256 } from 'crypto-js';
 import { useState, useEffect, useCallback } from 'react';
 
-function Block({prev, showNumber, showNonce, showPrev}) {
+function Block({prev, showNumber, showNonce, showPrev, showMine}) {
   // States
   const [number, setNumber] = useState('')
   const [nonce, setNonce] = useState('')
   const [data, setData] = useState('')
   const [hash, setHash] = useState('')
 
-  // Callbacks 
-  const computeHash = useCallback(() => {
+  // Helpers
+  const computeHash = (number, nonce, data, prev) => {
     const fullString = `${number}${nonce}${data}${prev}`
-    setHash(SHA256(fullString))
+    return String(SHA256(fullString))
+  }
+
+  // Callbacks 
+  const generateHash = useCallback(() => {
+    setHash(computeHash(number, nonce, data, prev))
   }, [number, nonce, data, prev])
 
+  /** 
+   * Find the nonce that will solve de puzzle.
+   * The puzzle here is to find the nonce that will generate a hash 
+   * starting with 0000
+  */
+  const mine = () => {
+    const limit = 1000000
+    for(let nonce = 0, finded = false; finded === false && nonce < limit; nonce++) {
+        const computedHash = computeHash(number, nonce, data, prev)
+        if(computedHash.startsWith('0000')) {    
+            finded = true
+            setNonce(nonce)
+        }
+    }
+  }
+
   useEffect(() => {
-    computeHash()
-  }, [computeHash])
+    generateHash()
+  }, [generateHash])
 
   return (
     <form className="block">
@@ -52,6 +73,18 @@ function Block({prev, showNumber, showNonce, showPrev}) {
             <input id="hash" type="text" name="hash" className="block__control" 
                 disabled value={hash} />
         </div>
+        {showMine &&
+            <div className="block__action">
+                <button className="btn" 
+                    onClick={(event) => { 
+                        event.preventDefault()
+                        mine()
+                    }} 
+                >
+                    Mine
+                </button>
+            </div>
+        }
     </form>
   );
 }
@@ -60,7 +93,8 @@ Block.defaultProps = {
     prev: '0000000000000000000000000000000000000000000000000000000000000000',
     showNumber: true,
     showNonce: true,
-    showPrev: true
+    showPrev: true,
+    showMine: true
 }
 
 export default Block;

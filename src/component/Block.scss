@@ -12,6 +12,10 @@
     align-items: flex-start;
 }
 
+.block__action {
+    padding-left: 30%;
+}
+
 .block__label {
     font-size: 16px;
     font-weight: 500;
@@ -24,4 +28,19 @@
     border-color: #AAA;
     border-width: 1px;
     border-radius: .2rem;
+}
+
+.btn {
+    padding: .75rem 1.5rem .75rem 1.5rem;
+    font-size: 16px;
+    font-size: 500;
+    background-color: #4A5781;
+    color: white;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #F7931A;
+    }
 }
