@@ -3,7 +3,8 @@ import logo from './assets/logo.svg'
 import { 
   Header, 
   Footer, 
-  Block 
+  Block,
+  Blockchain 
 } from './component';
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
           The difficulty target that adjusts the difficulty of mining,
           And a random string of characters called the nonce.
         </p>
+        <div className='App_section__main'>
+          <Block showPrev={false} />
+        </div>
       </div>
 
       {/* Blockchain section */}
@@ -64,6 +68,9 @@ function App() {
           A blockchain is exactly what it sounds like it is: 
           a chain consisting of blocks of information.
         </p>
+        <div className='App_section__main'>
+          <Blockchain />
+        </div>
       </div>
 
       {/* Distributed section */}
