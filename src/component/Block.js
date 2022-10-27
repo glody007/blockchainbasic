@@ -1,4 +1,5 @@
 import './Block.scss'
+import { SHA256 } from 'crypto-js';
 import { useState, useEffect, useCallback } from 'react';
 
 function Block({prev, showNumber, showNonce, showPrev}) {
@@ -11,7 +12,7 @@ function Block({prev, showNumber, showNonce, showPrev}) {
   // Callbacks 
   const computeHash = useCallback(() => {
     const fullString = `${number}${nonce}${data}${prev}`
-    setHash(fullString)
+    setHash(SHA256(fullString))
   }, [number, nonce, data, prev])
 
   useEffect(() => {
