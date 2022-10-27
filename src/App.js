@@ -1,6 +1,10 @@
 import './App.scss';
 import logo from './assets/logo.svg'
-import { Header, Footer } from './component';
+import { 
+  Header, 
+  Footer, 
+  Block 
+} from './component';
 
 function App() {
   return (
@@ -29,6 +33,15 @@ function App() {
           This is usually represented by a shorter, fixed-length value or key that represents and makes 
           it easier to find or employ the original string.
         </p>
+        <div className='App_section__main'>
+          <Block
+            showNonce={false}
+            showPrev={false}
+            showNumber={false}
+            showMine={false}
+            stateAware={false}
+          />
+        </div>
       </div>
 
       {/* Block section */}
