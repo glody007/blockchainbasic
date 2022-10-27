@@ -2,12 +2,22 @@ import './Block.scss'
 import { SHA256 } from 'crypto-js';
 import { useState, useEffect, useCallback } from 'react';
 
-function Block({prev, showNumber, showNonce, showPrev, showMine}) {
+function Block({
+    prev, 
+    showNumber, 
+    showNonce, 
+    showPrev, 
+    showMine,
+    stateAware
+}) {
+  const VALID = "VALID", INVALID = "INVALID"
+
   // States
   const [number, setNumber] = useState('')
   const [nonce, setNonce] = useState('')
   const [data, setData] = useState('')
   const [hash, setHash] = useState('')
+  const [state, setState] = useState(VALID)
 
   // Helpers
   const computeHash = (number, nonce, data, prev) => {
@@ -15,21 +25,33 @@ function Block({prev, showNumber, showNonce, showPrev, showMine}) {
     return String(SHA256(fullString))
   }
 
+  const hashHasRightProperty = (hash) => {
+    return hash.startsWith('0000')
+  }
+
   // Callbacks 
   const generateHash = useCallback(() => {
     setHash(computeHash(number, nonce, data, prev))
   }, [number, nonce, data, prev])
 
+  const refreshState = useCallback(() => {
+    if(hashHasRightProperty(hash)) {
+        setState(VALID)
+    } else {
+        setState(INVALID)
+    }
+  }, [hash])
+
   /** 
    * Find the nonce that will solve de puzzle.
    * The puzzle here is to find the nonce that will generate a hash 
-   * starting with 0000
+   * that has the right property.
   */
   const mine = () => {
     const limit = 1000000
     for(let nonce = 0, finded = false; finded === false && nonce < limit; nonce++) {
         const computedHash = computeHash(number, nonce, data, prev)
-        if(computedHash.startsWith('0000')) {    
+        if(hashHasRightProperty(computedHash)) {    
             finded = true
             setNonce(nonce)
         }
@@ -38,10 +60,12 @@ function Block({prev, showNumber, showNonce, showPrev, showMine}) {
 
   useEffect(() => {
     generateHash()
-  }, [generateHash])
+    refreshState()
+  }, [generateHash, refreshState])
 
   return (
-    <form className="block">
+    <form className={`block ${stateAware && state === VALID ? "block--valid" : ""} 
+        ${stateAware && state === INVALID ? "block--invalid" : ""}`}>
         {showNumber && 
             <div className="block__row">
                 <label for="number" className="block__label">Block:</label>
@@ -94,7 +118,8 @@ Block.defaultProps = {
     showNumber: true,
     showNonce: true,
     showPrev: true,
-    showMine: true
+    showMine: true,
+    stateAware: true,
 }
 
 export default Block;
