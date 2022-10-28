@@ -1,0 +1,9 @@
+.blockchain {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
+}
+
+.blockchain__block {
+    min-width: 30rem;
+}

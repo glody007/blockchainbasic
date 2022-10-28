@@ -1,13 +1,26 @@
 import './Blockchain.scss'
 import Block from './Block'
-import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
+import { 
+    useState, 
+    useEffect, 
+    useCallback 
+} from 'react'
 
 
 function Blockchain({ blockQte }) {
 
-    const [blocks, setBlocks] = useState([{id:1}, {id:2}, {id:3}])
+    const [blocks, setBlocks] = useState([])
 
     // Callbacks 
+    const createBlocks = useCallback(() => {
+        const newBlockList = []
+        for(let i=0; i < blockQte; i++) {
+            newBlockList.push({id: uuidv4()})
+        }
+        setBlocks(newBlockList)
+    }, [blockQte])
+
     const onGenerateHash = (newHash, index) => {
         if(index + 1 < blocks.length) {
             const newBlockList = [...blocks]
@@ -16,13 +29,19 @@ function Blockchain({ blockQte }) {
         }
     }
 
+    useEffect(() => {
+        createBlocks()
+    }, [createBlocks])
+
     return (
-      <div>
+      <div className='blockchain'>
         {blocks.map((item, index)=> (
-            <Block numberInitialValue={index+1} key={item.id} 
-                onGenerateHash={(newHash) => onGenerateHash(newHash, index)} 
-                prev={item.prev}
-            />
+            <div className='blockchain__block' key={item.id} >
+                <Block numberInitialValue={index+1}
+                    onGenerateHash={(newHash) => onGenerateHash(newHash, index)} 
+                    prev={item.prev}
+                />
+            </div>
         ))}
       </div>  
     )
