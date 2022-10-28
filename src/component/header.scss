@@ -1,28 +1,44 @@
 .Header-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2rem 0 1rem;
+}
+
+.Header-logo {
+  height: 4rem;
+  pointer-events: none;
+}
+
+.Header-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.Header-link {
+  cursor: pointer;
+  font-weight: 300;
+  color: #555;
+
+  &:hover {
+    color: #F7931A;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Header-nav {
     display: flex;
-    justify-content: space-between;
-    margin: 0 2rem 0 1rem;
+    flex-direction: column;
+    margin: 0 1rem 0 1rem;
   }
-  
-  .Header-logo {
-    height: 4rem;
-    pointer-events: none;
-  }
-  
+
   .Header-links {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 0;
   }
-  
-  .Header-link {
-    cursor: pointer;
-    font-weight: 300;
-    color: #555;
-
-    &:hover {
-      color: #F7931A;
-    }
-  }
-  
+} 
   

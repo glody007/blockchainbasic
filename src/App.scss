@@ -52,3 +52,21 @@
   color: white;
   font-size: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .App-section {
+    margin: auto;
+    min-height: 80vh;
+    padding: 0 1rem 0 1rem;
+  }
+
+  .Hero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .Hero-image {
+    display: none;
+  }
+}

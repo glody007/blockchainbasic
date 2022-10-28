@@ -54,3 +54,29 @@
 .address {
     color: #F7931A;
 }
+
+@media only screen and (max-width: 600px) {
+    .App-footer__main {
+        min-height: 50vh;
+        margin: auto;
+        padding: 1rem;
+    }
+    
+    .App-footer__content {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .App-footer__items {
+        display: flex;
+        flex-direction: column;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 28px;
+        font-weight: 300;
+    }
+}
