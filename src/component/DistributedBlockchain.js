@@ -41,7 +41,7 @@ function DistributedBlockchain({ numberOfPeer }) {
         <div className='dist-blockchain'>
             {peers.map((item) => (
                 <div className='peer' key={item.id}>
-                    <h3 className='peer__title'>{item.name}</h3>
+                    <h3 className='peer__title'>Peer {item.name}</h3>
                     <Blockchain />
                 </div>
             ))}
