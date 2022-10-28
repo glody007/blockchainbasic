@@ -8,18 +8,18 @@ import {
 } from 'react'
 
 
-function Blockchain({ blockQte }) {
+function Blockchain({ numberOfBlock }) {
 
     const [blocks, setBlocks] = useState([])
 
     // Callbacks 
     const createBlocks = useCallback(() => {
         const newBlockList = []
-        for(let i=0; i < blockQte; i++) {
+        for(let i=0; i < numberOfBlock; i++) {
             newBlockList.push({id: uuidv4()})
         }
         setBlocks(newBlockList)
-    }, [blockQte])
+    }, [numberOfBlock])
 
     const onGenerateHash = (newHash, index) => {
         if(index + 1 < blocks.length) {
@@ -48,7 +48,7 @@ function Blockchain({ blockQte }) {
 }
 
 Blockchain.defaultProps = {
-    blockQte: 4
+    numberOfBlock: 4
 }
 
 export default Blockchain
