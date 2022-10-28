@@ -1,6 +1,10 @@
 # Blockchain basics
 
-An interactive tool to learn how blockchain works.
+### A visual and interactive tool to learn how blockchain works, which is the technology behind Bitcoin, decentralized applications, and more.
+
+![alt preview Hero](https://github.com/glody007/blockchainbasic/blob/master/preview/hero-desktop.png?raw=true)
+
+![alt preview Distributed blockchain](https://github.com/glody007/blockchainbasic/blob/master/preview/distributed-desktop.png?raw=true)
 
 ## Available Scripts
 
