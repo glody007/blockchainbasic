@@ -18,7 +18,7 @@ function App() {
         <div className='App-section Hero'>
           <div className='Hero-main'>
             <h1>Understand how <span className='highlited'>Blockchain</span> works on just one page.</h1>
-            <h4>Learn how Bitcoin works by understanding the blockchain, which is the technology behind it.</h4>
+            <h4>Learn with visual and interactive tools to understand the technology behind Bitcoin, decentralized applications, and more.</h4>
             <button className='button button--cta'>
               Learn
             </button>
