@@ -11,7 +11,8 @@ function Footer() {
                     <button className='button button--cta'>
                         Donate
                     </button>
-                    <p className='address'>3E8ociqZa9mZUSwGdSmAEMAoAxBK3FNDcd</p>
+                    <p className='address-label'>Bitcoin address:</p>
+                    <p className='address'>bc1qtwlga9xpksqlryyr00xxwfwmmges0wryptc9dk</p>
                 </div>
                 <div className='App-footer__item'>
                     <h3>Contact:</h3>
