@@ -4,7 +4,8 @@ import {
   Header, 
   Footer, 
   Block,
-  Blockchain 
+  Blockchain,
+  DistributedBlockchain 
 } from './component';
 
 function App() {
@@ -81,6 +82,9 @@ function App() {
           share and synchronize transactions in their respective electronic ledgers 
           (instead of keeping data centralized as in a traditional ledger).
         </p>
+        <div className='App_section__main'>
+          <DistributedBlockchain />
+        </div>
       </div>
 
       {/* Tokens section */}
